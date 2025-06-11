@@ -143,11 +143,20 @@
             background-color: var(--accent);
         }
 
-        .toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
+        .link-button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 16px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .link-button:hover {
+            background-color: #1c6690;
         }
 
         .toggle label {
@@ -320,6 +329,14 @@
                 </ul>
                 <div class="highlight">Total: $1,305</div>
             </div>
+            <div class="card">
+                <h3>📝 Reference</h3>
+                <p>This page was designed based on a requirement example.</p>
+                <a href="https://saurabhrathod35.github.io/test-portfoilio/" target="_blank" class="link-button">
+                    🔗 View Live Reference
+                </a>
+            </div>
+
         </div>
 
         <div class="cta">
