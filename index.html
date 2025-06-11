@@ -3,220 +3,358 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Bookkeeping</title>
+    <title>Proposal for Bookkeeping Platform Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            color: #333;
-            line-height: 1.6;
+        :root {
+            --bg: #f9fafc;
+            --text: #333;
+            --card: #fff;
+            --highlight: #27ae60;
+            --primary: #2980b9;
+            --accent: #ecf0f1;
         }
 
-        h1,
-        h2,
-        h3 {
-            color: #1a5276;
+        [data-theme="dark"] {
+            --bg: #1e1e1e;
+            --text: #eee;
+            --card: #2e2e2e;
+            --highlight: #2ecc71;
+            --primary: #3498db;
+            --accent: #3c3c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            padding: 40px 20px;
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+            padding: 24px;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .card p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .highlight {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--highlight);
+            margin-top: 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta button {
+            background-color: var(--highlight);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta button:hover {
+            background-color: #1e8449;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            font-size: 14px;
+            color: #888;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin-top: 10px;
         }
 
         th,
         td {
-            border: 1px solid #ccc;
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: var(--accent);
         }
 
-        .section {
-            margin-top: 40px;
+        .toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
         }
 
-        .highlight {
-            font-weight: bold;
-            color: #2e86c1;
+        .toggle label {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle label {
+            cursor: pointer;
+            background: var(--primary);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .toggle .icon {
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
 
 <body>
-
-    <h1>📘 Bookkeeping Portfolio — Costing Document</h1>
-    <p><strong>📅 Date:</strong> June 11, 2025</p>
-
-    <div class="section">
-        <h2>1️⃣ Development Cost Breakdown</h2>
-        <table>
-            <tr>
-                <th>Task</th>
-                <th>Hours</th>
-                <th>Cost</th>
-            </tr>
-            <tr>
-                <td>Project setup & configuration (Prisma)</td>
-                <td>18</td>
-                <td>$270</td>
-            </tr>
-            <tr>
-                <td>Contact Us form (UI + API + DB)</td>
-                <td>10</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Feedback form + display (UI + API + DB)</td>
-                <td>14</td>
-                <td>$210</td>
-            </tr>
-            <tr>
-                <td>Authentication setup (Auth integration, login)</td>
-                <td>10</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Client dashboard (protected routes, feedback)</td>
-                <td>10</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Delete feedback API + confirmation UI</td>
-                <td>10</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Testing, bug fixes, responsiveness, styling</td>
-                <td>0</td>
-                <td>$0</td>
-            </tr>
-            <tr>
-                <td>Deployment & support (initial launch support)</td>
-                <td>15</td>
-                <td>$225</td>
-            </tr>
-        </table>
-        <p class="highlight">🧾 Total Development Cost: $1,305</p>
-        <p><em>This estimate is based on the current scope. Any additional features will be considered change requests
-                and estimated separately.</em></p>
+    <div class="toggle">
+        <label for="themeToggle">
+            <input type="checkbox" id="themeToggle" />
+            <span class="icon">🌙</span>
+        </label>
     </div>
 
-    <div class="section">
-        <h2>2️⃣ Infrastructure & Maintenance (Year 1)</h2>
-        <table>
-            <thead>
-                <th>Item</th>
-                <th>Cost</th>
-                <th>Frequency</th>
-                <th>Notes</th>
-            </thead>
-            <tr>
-                <td>Domain</td>
-                <td>$50</td>
-                <td>Per Year</td>
-                <td>Depends on domain TBD</td>
-            </tr>
-            <tr>
-                <td>Server</td>
-                <td>$25</td>
-                <td>Monthly ($300/year)</td>
-                <td>Hosting + Storage</td>
-            </tr>
-            <tr>
-                <td>Maintenance</td>
-                <td>$6</td>
-                <td>Weekly ($312/year)</td>
-                <td>Updates & maintenance</td>
-            </tr>
-        </table>
-        <p class="highlight">🧾 Total Infra & Maintenance (Year 1): $662</p>
-    </div>
+    <div class="container">
+        <h1>📘 Proposal for Bookkeeping Platform Development</h1>
 
-    <div class="section">
-        <h2>3️⃣ Total Estimated Cost — Year 1</h2>
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>Amount</th>
-            </tr>
-            <tr>
-                <td>Development</td>
-                <td>$1,305</td>
-            </tr>
-            <tr>
-                <td>Infra & Maintenance</td>
-                <td>$662</td>
-            </tr>
-            <tr>
-                <th>Grand Total (Year 1)</th>
-                <th>$1,967</th>
-            </tr>
-        </table>
-    </div>
+        <div class="section">
+            <h2>🛠 Development</h2>
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Hours</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Project setup & configuration (Prisma)</td>
+                    <td>18</td>
+                    <td>$270</td>
+                </tr>
+                <tr>
+                    <td>Contact Us form (UI + API + DB)</td>
+                    <td>10</td>
+                    <td>$150</td>
+                </tr>
+                <tr>
+                    <td>Feedback form + display (UI + API + DB)</td>
+                    <td>14</td>
+                    <td>$210</td>
+                </tr>
+                <tr>
+                    <td>Authentication setup (Auth integration, login)</td>
+                    <td>10</td>
+                    <td>$150</td>
+                </tr>
+                <tr>
+                    <td>Client dashboard (protected routes, feedback)</td>
+                    <td>10</td>
+                    <td>$150</td>
+                </tr>
+                <tr>
+                    <td>Delete feedback API + confirmation UI</td>
+                    <td>10</td>
+                    <td>$150</td>
+                </tr>
+                <tr>
+                    <td>Testing, bug fixes, responsiveness, styling</td>
+                    <td>0</td>
+                    <td>$0</td>
+                </tr>
+                <tr>
+                    <td>Deployment & support (initial launch support)</td>
+                    <td>15</td>
+                    <td>$225</td>
+                </tr>
+            </table>
+            <p class="highlight">Total: $1,305</p>
+        </div>
 
-    <div class="section">
-        <h2>4️⃣ Total Estimated Cost — From Year 2</h2>
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>Amount</th>
-            </tr>
-            <tr>
-                <td>Infra & Maintenance (Year 2)</td>
-                <td>$662</td>
-            </tr>
-        </table>
-        <p><em>Note: May vary based on database size.</em></p>
-    </div>
+        <div class="section">
+            <h2>🌐 Infrastructure (Year 1)</h2>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Frequency</th>
+                </tr>
+                <tr>
+                    <td>Domain</td>
+                    <td>$50</td>
+                    <td>Per Year</td>
+                </tr>
+                <tr>
+                    <td>Server</td>
+                    <td>$25/month ($300/year)</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Maintenance</td>
+                    <td>$6/week ($312/year)</td>
+                    <td>Weekly</td>
+                </tr>
+            </table>
+            <p class="highlight">Total: $662</p>
+        </div>
 
-    <div class="section">
-        <h2>5️⃣ Future Change Requests</h2>
-        <p>Any additional features, bug fixes, or scope changes will be estimated separately at
-            <strong>$15/hour</strong> (depending on complexity and urgency).</p>
-        <p>✅ Estimations will be shared and approved before implementation.</p>
-        <ul>
-            <li>Adding new dashboard widgets</li>
-            <li>Integration with accounting software</li>
-            <li>Additional user roles and permissions</li>
-            <li>Advanced reporting modules</li>
-        </ul>
-    </div>
+        <div class="section card-grid">
+            <div class="card">
+                <h3>📦 Total Cost — Year 1</h3>
+                <p>Development: $1,305</p>
+                <p>Infra & Maintenance: $662</p>
+                <div class="highlight">Grand Total: $1,967</div>
+            </div>
+            <div class="card">
+                <h3>🔁 Year 2 Projection</h3>
+                <p>Infra & Maintenance: $662</p>
+                <p class="highlight">Subject to database size changes</p>
+            </div>
+        </div>
 
-    <div class="section">
-        <h2>✍️ Agreement & Payment Terms</h2>
-        <p>We’ll share an official <strong>e-sign document</strong> upon agreement.</p>
-        <table>
-            <tr>
-                <th>Milestone</th>
-                <th>%</th>
-                <th>Amount</th>
-            </tr>
-            <tr>
-                <td>Upfront (Kick-off)</td>
-                <td>30%</td>
-                <td>$392</td>
-            </tr>
-            <tr>
-                <td>Post-demo</td>
-                <td>50%</td>
-                <td>$653</td>
-            </tr>
-            <tr>
-                <td>Final Delivery</td>
-                <td>20%</td>
-                <td>$261</td>
-            </tr>
-            <tr>
-                <th>Total (Development)</th>
-                <th>100%</th>
-                <th>$1,305</th>
-            </tr>
-        </table>
+        <div class="section card-grid">
+            <div class="card">
+                <h3>⚙️ Change Requests</h3>
+                <p><strong>Rate:</strong> $15/hour <em>(based on complexity and urgency)</em></p>
+                <p>All change requests require approval before implementation.</p>
+                <ul>
+                    <li>➕ Dashboard enhancements</li>
+                    <li>🔗 Accounting software integrations</li>
+                    <li>👥 Payment Reminders & Alerts: Email/WhatsApp-based reminders</li>
+                    <li>📊 Advanced reporting modules</li>
+                    <li>Integration with Accounting Software</li>
+                    <li>API for External Access (for third-party systems)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>📝 Payment Milestones</h3>
+                <ul>
+                    <li>💰 <strong>30%</strong> Upfront – $392</li>
+                    <li>✅ <strong>50%</strong> After Demo – $653</li>
+                    <li>🚀 <strong>20%</strong> On Final Delivery – $261</li>
+                </ul>
+                <div class="highlight">Total: $1,305</div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <button>📩 Proceed with Agreement</button>
+        </div>
+
+        <footer>
+            &copy; 2025 Bookkeeping Portfolio | All rights reserved
+        </footer>
     </div>
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const icon = document.querySelector('.icon');
+
+        // On load, apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            toggle.checked = true;
+            icon.textContent = '🌞';
+        }
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.textContent = '🌞';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
 
 </body>
 
